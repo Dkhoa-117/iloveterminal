@@ -1,0 +1,5 @@
+[user]
+	name = vudangkhoa
+	email = dangkhoa11227@gmail.com
+[alias]
+	prettylog = log --graph --pretty=format:'%C(red)%h%Creset -%C(yellow)%d%Creset %s %C(green)(%cr) %C(yellow)<%an>%Creset'

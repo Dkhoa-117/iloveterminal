@@ -1,0 +1,12 @@
+reload
+l
+ls [dir]
+serverthis [dir]
+quicknote
+rm [filename]
+startandroid
+noteinfile [filename]
+note [text]
+makedir [foldername]
+gitclone [username] [git repo]
+git prettylog
