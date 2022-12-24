@@ -1,4 +1,4 @@
-# ~/.config/starship.toml
+# ~/.config/starship.bash.toml
 
 # Inserts a blank line between shell prompts
 add_newline = true
@@ -13,17 +13,11 @@ format = """\
 [╭╴](238)$env_var \
 $all[╰─](238)$character"""
 
-# new config
-# format = """$env_var $all"""
-
 # Change the default prompt characters
 # ---
 [character]
-# old config
 success_symbol = "[](238)"
 error_symbol = "[](238)"
-# success_symbol = ""
-# error_symbol = ""
 
 # Shows an icon that should be included by zshrc script based on the distribution or os
 [env_var.STARSHIP_DISTRO]
@@ -31,25 +25,24 @@ format = '[$env_value](bold white)'  # removed space between distro and rest for
 variable = "STARSHIP_DISTRO"
 disabled = false
 
-# Shows the username
-[username]
-style_user = "white bold"
-style_root = "black bold"
-format = "[$user]($style) "
-disabled = true  # disable in powershell
-show_always = false
-
 [directory]
 truncation_length = 3
 truncation_symbol = "…/"
 home_symbol = "🏠 ~"
 read_only_style = "197"
 read_only = " 🔒 "
+style="bold 39"
 format = "at [$path]($style)[$read_only]($read_only_style) "
+[directory.substitutions]
+"Documents" = " Documents"
+"Downloads" = " Downloads"
+"Desktop" = " Desktop"
+"Library" = " Library"
 
 [git_branch]
 symbol = " "
-format = "via [$symbol$branch]($style) "
+always_show_remote=false
+format = "on [$symbol$branch(:$remote_branch)]($style) "
 truncation_length = 4
 truncation_symbol = "…/"
 style = "bold green"
@@ -57,7 +50,7 @@ style = "bold green"
 [git_status]
 format = '[\($all_status$ahead_behind\)]($style) '
 style = "bold green"
-conflicted = "🏳"
+conflicted = " "
 up_to_date = " "
 untracked = " "
 ahead = "⇡${count}"
@@ -69,20 +62,20 @@ staged = '[++\($count\)](green)'
 renamed = "襁 "
 deleted = " "
 
+[username]
+style_user = "white bold"
+style_root = "red bold"
+format = "[$user]($style) "
+disabled = false  # disable in powershell
+show_always = true
 # SSH CONFIGURATION
+[hostname]
+format = '[$ssh_symbol$hostname [](#FFE9A0) ]($style)'
+ssh_symbol=' '
 [localip]
 ssh_only = true
-format = "@[$localipv4](bold red) "
+format = "[$localipv4](bold red) "
 disabled = false
-
-[terraform]
-format = "via [ terraform $version]($style) 壟 [$workspace]($style) "
-
-[vagrant]
-format = "via [ vagrant $version]($style) "
-
-[helm]
-format = "via [ $version](bold purple) "
 
 [docker_context]
 format = "via [ $context](bold blue) "
@@ -96,18 +89,21 @@ disabled = false
 
 [python]
 symbol = " "
+format="via [$symbol($version )]($style)"
 python_binary = ["python", "python3", "python2"]
 
 [kotlin]
 symbol = "🅺 "
+format='via [$symbol($version )]($style)'
 kotlin_binary = "kotlin"
 
 [nodejs]
-symbol = "   "
+symbol = " "
 format = "via [$symbol($version )]($style)"
 
 [java]
-symbol = "🍵 "
+symbol = " "
+style = "bold red"
 format = "via [$symbol($version )]($style)"
 
 [c]
